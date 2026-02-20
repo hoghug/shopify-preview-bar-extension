@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Shopify Preview Bar Toggle",
+  "version": "1.0",
+  "description": "Hide or toggle the Shopify theme preview bar",
+  "permissions": ["activeTab", "scripting"],
+  "icons": {
+    "16": "icons/eye-open-16.png",
+    "48": "icons/eye-open-48.png",
+    "128": "icons/eye-open-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/eye-open-16.png",
+      "48": "icons/eye-open-48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["page.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
